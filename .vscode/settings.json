@@ -1,8 +1,5 @@
 {
-    "typescript.tsserver.experimental.enableProjectDiagnostics": true,
-    "typescript.preferences.importModuleSpecifier": "relative",
-    "cSpell.words": [
-        "popperjs",
-        "thaitourism"
-    ]
+  "typescript.tsserver.experimental.enableProjectDiagnostics": true,
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "cSpell.words": ["popperjs", "thaitourism"]
 }
