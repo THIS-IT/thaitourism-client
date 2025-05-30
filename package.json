@@ -7,6 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "test:cov": "ng test --code-coverage --watch=false",
+    "test:watch": "ng test --watch",
     "prepare": "husky install",
     "format": "prettier --write .",
     "test:staged": "lint-staged"
