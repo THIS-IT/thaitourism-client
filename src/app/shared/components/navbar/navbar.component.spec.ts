@@ -28,4 +28,16 @@ describe('NavbarComponent', () => {
       expect(consoleSpy).toHaveBeenCalledWith('เลือกภาษา:', language);
     });
   });
+
+  describe('changePage', () => {
+    beforeEach(() => {
+      component.isPage = 'thailandTourism';
+    });
+    it('should log changePage', () => {
+      const consoleSpy = spyOn(console, 'log');
+      const page = 'travelPackages';
+      component.changePage(page);
+      expect(consoleSpy).toHaveBeenCalledWith('เปลี่ยนหน้าไป:', page);
+    });
+  });
 });
