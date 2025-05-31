@@ -43,3 +43,54 @@
     color: #ffd700;
   }
 }
+
+.navbar-brand {
+  font-family: 'CharmBold', sans-serif;
+  font-size: 1.5rem;
+  color: #ffd700;
+  border: none;
+  background-color: #181818;
+}
+
+.img-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  filter: brightness(0) invert(1); // ทำให้รูปกลายเป็นสีขาว
+}
+
+.custom-modal .modal-content {
+  background-color: #1e1e1e;
+  /* เปลี่ยนเป็นสีดำเท่ห์ ๆ */
+  color: #212121;
+  /* ให้ข้อความอ่านง่าย */
+  border: none;
+  border-radius: 12px;
+}
+
+.custom-modal .modal-header,
+.custom-modal .modal-body {
+  background-color: #1e1e1e;
+}
+
+.lang-btn {
+  margin: 0.5rem;
+  font-weight: normal;
+  transition: all 0.2s ease-in-out;
+  color: white;
+
+  &:hover {
+    color: #d4af37; // สีทอง
+    transform: scale(1.05);
+  }
+}
+
+.btn-close.text-white {
+  filter: invert(1);
+  /* พลิกสีให้ปุ่มเป็นขาว */
+}
+
+.btn-close:focus {
+  outline: none;
+  box-shadow: none;
+}

@@ -19,4 +19,13 @@ describe('NavbarComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  describe('selectLanguage', () => {
+    it('should log selected language', () => {
+      const consoleSpy = spyOn(console, 'log');
+      const language = 'en';
+      component.selectLanguage(language);
+      expect(consoleSpy).toHaveBeenCalledWith('เลือกภาษา:', language);
+    });
+  });
 });

@@ -2,8 +2,13 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
-  imports: [],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.scss',
+  styleUrls: ['./navbar.component.scss'],
 })
-export class NavbarComponent {}
+export class NavbarComponent {
+  iConLanguage = 'assets/icons/language.png';
+
+  selectLanguage(lang: string): void {
+    console.log('เลือกภาษา:', lang);
+  }
+}

@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-eerie-black">
   <div class="container-fluid">
-    <a class="navbar-brand fs-2 fw-bolder font-charm-bold" href="#"
-      >Thailand Tourism</a
-    >
+    <button class="navbar-brand fs-2 fw-bolder font-charm-bold">
+      Thailand Tourism
+    </button>
     <button
       class="navbar-toggler d-lg-none"
       type="button"
@@ -31,10 +31,59 @@
         <li class="nav-item me-2">
           <button class="btn-nav pt-2">Login</button>
         </li>
-        <li class="nav-item">
+        <li class="nav-item me-2">
           <button class="btn-nav pt-2">Sign Up</button>
+        </li>
+
+        <!-- 🌐 ปุ่มลูกโลก เปิด Modal -->
+        <li class="nav-item me-3">
+          <button
+            class="btn-nav pt-2"
+            data-bs-toggle="modal"
+            data-bs-target="#languageModal"
+          >
+            <!-- ไอคอน: โชว์เฉพาะ lg ขึ้น -->
+            <img
+              src="assets/icons/language.png"
+              alt="Language Icon"
+              class="img-icon d-none d-lg-block"
+            />
+
+            <!-- ข้อความ: โชว์เฉพาะ md ลง -->
+            <span class="d-lg-none">Language</span>
+          </button>
         </li>
       </ul>
     </div>
   </div>
 </nav>
+
+<!-- 🌐 Language Modal -->
+<div
+  class="modal fade custom-modal"
+  id="languageModal"
+  tabindex="-1"
+  aria-labelledby="languageModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center">
+      <div class="modal-header">
+        <h5 class="modal-title w-100 text-white" id="languageModalLabel">
+          Select Language
+        </h5>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <button class="btn lang-btn">🇹🇭 ภาษาไทย</button>
+        <button class="btn lang-btn">🇨🇳 中文</button>
+        <button class="btn lang-btn">🇬🇧 English</button>
+      </div>
+    </div>
+  </div>
+</div>
