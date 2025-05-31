@@ -1,5 +1,17 @@
 {
   "typescript.tsserver.experimental.enableProjectDiagnostics": true,
   "typescript.preferences.importModuleSpecifier": "relative",
-  "cSpell.words": ["popperjs", "thaitourism"]
+  "cSpell.words": [
+    "Ancizar",
+    "Csvg",
+    "popperjs",
+    "thaitourism",
+    "wght",
+    "จริงๆ",
+    "จะใช้",
+    "จะใช้กับ",
+    "เป็น",
+    "ไฟล์",
+    "ใส่พวก"
+  ]
 }

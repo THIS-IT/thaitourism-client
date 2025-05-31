@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  background-color: #212121;
+  font-family: AncizarSerif, sans-serif;
+}
+
+@font-face {
+  font-family: 'CharmBold';
+  src: url('assets/fonts/Charm/Charm-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'AncizarSerif';
+  src: url('assets/fonts/Ancizar_Serif,Kanit/Ancizar_Serif/AncizarSerif-VariableFont_wght.ttf')
+    format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
