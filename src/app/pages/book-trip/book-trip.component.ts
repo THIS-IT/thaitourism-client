@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./book-trip.component.scss'],
 })
 export class BookTripComponent implements OnInit {
+  flowerImage = 'assets/images/hibiscus.png';
   ngOnInit(): void {
     console.log('🟢 BookTripComponent Loaded!');
   }

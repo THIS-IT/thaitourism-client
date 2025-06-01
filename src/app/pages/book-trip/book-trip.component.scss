@@ -1,0 +1,58 @@
+.card-bg-eerie-black {
+  background-color: #181818;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  color: aliceblue;
+  position: relative;
+  overflow: hidden;
+}
+
+.flower {
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px; // ช่วยเว้นระยะระหว่างดอกไม้เล็กน้อย
+
+  // Mobile First (iPhone SE ขึ้นไป)
+  .flower-1 {
+    width: 30px;
+  }
+
+  .flower-2 {
+    width: 35px;
+  }
+
+  .flower-3 {
+    width: 30px;
+  }
+
+  // Tablet ขึ้นไป (≥768px)
+  @media (min-width: 768px) {
+    .flower-1 {
+      width: 45px;
+    }
+
+    .flower-2 {
+      width: 55px;
+    }
+
+    .flower-3 {
+      width: 45px;
+    }
+  }
+
+  // Desktop ขึ้นไป (≥992px)
+  @media (min-width: 992px) {
+    .flower-1 {
+      width: 55px;
+    }
+
+    .flower-2 {
+      width: 65px;
+    }
+
+    .flower-3 {
+      width: 55px;
+    }
+  }
+}
