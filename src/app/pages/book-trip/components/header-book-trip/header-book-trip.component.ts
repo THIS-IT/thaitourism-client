@@ -7,8 +7,9 @@ import {
 } from '@angular/core';
 import { gsap } from 'gsap';
 import { SplitText } from 'gsap/all';
+
+import { SplitTextAnimationService } from '../../../../shared/utils/animation/split-text-animation.component';
 import { CheckElementRefComponent } from '../../../../shared/utils/check-element-ref/check-element-ref.unils';
-import { SplitTextAnimationService } from './animation/header-book-trip-animation.component';
 gsap.registerPlugin(SplitText);
 @Component({
   selector: 'app-header-book-trip',

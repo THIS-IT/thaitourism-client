@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { SplitTextAnimationService } from './header-book-trip-animation.component';
+import { SplitTextAnimationService } from './split-text-animation.component';
 
 describe('SplitTextAnimationService', () => {
   let service: SplitTextAnimationService;

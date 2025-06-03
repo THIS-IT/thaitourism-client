@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import * as animationModule from './animation/header-book-trip-animation.component';
+import * as animationModule from '../../../../shared/utils/animation/split-text-animation.component';
 
 import { HeaderBookTripComponent } from './header-book-trip.component';
 describe('HeaderBookTripComponent', () => {
