@@ -24,12 +24,17 @@
     >
       <ul class="navbar-nav">
         <li class="nav-item me-3" *ngFor="let isMenu of menus">
-          <button class="btn-nav pt-2" (click)="changePage(isMenu.value)">
+          <button
+            class="btn-nav pt-2"
+            (click)="changePage(isMenu.value)"
+            data-bs-toggle="collapse"
+            data-bs-target=".navbar-collapse.show"
+          >
             {{ isMenu.name }}
           </button>
         </li>
 
-        <!-- 🌐 ปุ่มลูกโลก เปิด Modal Language  -->
+        <!-- 🌐 ปุ่มลูกโลก เป็น Modal Language  -->
         <li class="nav-item me-3">
           <button
             class="btn-nav pt-2"

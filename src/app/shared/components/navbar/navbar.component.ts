@@ -6,7 +6,7 @@ import { LoginComponent } from '../../../pages/login/login.component';
 import { SignUpComponent } from '../../../pages/sign-up/sign-up.component';
 import { ThailandTourismComponent } from '../../../pages/thailand-tourism/thailand-tourism.component';
 import { TravelPackagesComponent } from '../../../pages/travel-packages/travel-packages.component';
-import { NAVBAR_MENUS } from './data/navbar-menus';
+import { NAVBAR_MENUS } from './data/navbar-menus.constant';
 
 @Component({
   selector: 'app-navbar',
