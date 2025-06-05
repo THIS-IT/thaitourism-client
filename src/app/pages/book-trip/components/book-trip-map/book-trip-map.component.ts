@@ -45,15 +45,18 @@ export class BookTripMapComponent implements OnChanges {
       // สร้างแผนที่ใหม่
       this.map = L.map(this.mapElementRef!.nativeElement, {
         center: this.getCenter(origin, destination), // จุดศูนย์กลางระหว่างต้น-ปลายทาง
-        zoom: 2,
+        zoom: 0,
         zoomControl: false,
         attributionControl: false,
       });
 
       // เพิ่ม tile layer จาก OpenStreetMap
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 18,
-      }).addTo(this.map);
+      L.tileLayer(
+        'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
+        {
+          maxZoom: 18,
+        },
+      ).addTo(this.map);
 
       // ปักหมุดสนามบินต้นทาง
       L.marker(origin, {
