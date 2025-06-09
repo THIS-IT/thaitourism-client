@@ -5,6 +5,8 @@ import { ValidationDataUnils } from '../../../../shared/utils/validation-data/va
 import { Airport } from '../body-book-trip/models/airport-seletor/airport-selector-th.model';
 import { BookTripMapComponent } from './book-trip-map.component';
 
+type LatLng = Readonly<{ lat: number; lng: number }>;
+
 describe('BookTripMapComponent', () => {
   let component: BookTripMapComponent;
   let fixture: ComponentFixture<BookTripMapComponent>;
@@ -94,10 +96,65 @@ describe('BookTripMapComponent', () => {
       component.airportSelectorTH = { lat: 13, long: 100 } as Airport;
       component.airportSelectorUSA = { lat: 37, long: -122 } as Airport;
       component.ngOnChanges();
-      const originalMap = (component as any).map;
+      const originalMap = component['map'] as unknown as L.Map;
       const removeSpy = spyOn(originalMap, 'remove').and.callThrough();
       component.ngOnChanges();
       expect(removeSpy).toHaveBeenCalled();
+    });
+  });
+
+  describe('ngAfterViewInit()', () => {
+    it('should call renderMapIfNeeded', () => {
+      const spy = spyOn(component, 'renderMapIfNeeded');
+      component.ngAfterViewInit();
+      expect(spy).toHaveBeenCalled();
+    });
+  });
+
+  describe('renderMapIfNeeded()', () => {
+    let renderMapSpy: jasmine.Spy;
+
+    beforeEach(() => {
+      // Spy หนึ่งรอบพอ เอาไว้ใช้ในทุกเทสต์
+      renderMapSpy = spyOn(
+        component as unknown as {
+          renderMap: (origin: LatLng, destination: LatLng) => void;
+        },
+        'renderMap',
+      );
+    });
+
+    it('should call renderMap if origin, destination, and mapElementRef are valid', () => {
+      component.airportSelectorTH = { lat: 10, long: 20 } as Airport;
+      component.airportSelectorUSA = { lat: 30, long: 40 } as Airport;
+      component.mapElementRef = new ElementRef(document.createElement('div'));
+
+      component.renderMapIfNeeded();
+
+      expect(renderMapSpy).toHaveBeenCalledWith(
+        { lat: 10, lng: 20 },
+        { lat: 30, lng: 40 },
+      );
+    });
+
+    it('should NOT call renderMap if origin is null', () => {
+      component.airportSelectorTH = null;
+      component.airportSelectorUSA = { lat: 30, long: 40 } as Airport;
+      component.mapElementRef = new ElementRef(document.createElement('div'));
+
+      component.renderMapIfNeeded();
+
+      expect(renderMapSpy).not.toHaveBeenCalled();
+    });
+
+    it('should NOT call renderMap if mapElementRef is not available', () => {
+      component.airportSelectorTH = { lat: 10, long: 20 } as Airport;
+      component.airportSelectorUSA = { lat: 30, long: 40 } as Airport;
+      component.mapElementRef = undefined;
+
+      component.renderMapIfNeeded();
+
+      expect(renderMapSpy).not.toHaveBeenCalled();
     });
   });
 });

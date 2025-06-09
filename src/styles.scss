@@ -24,3 +24,25 @@ body {
 .font-color {
   color: #ffd700;
 }
+
+/* styles.scss */
+.marker-label {
+  background: rgba(0, 0, 0, 0.7);
+  /* ดำโปร่ง */
+  color: #ffd700;
+  /* สีทอง */
+  font-weight: 600;
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+  font-size: 14px;
+  padding: 6px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  /* ขอบทอง */
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.5),
+    inset 0 0 8px rgba(255, 215, 0, 0.2);
+  backdrop-filter: blur(4px);
+  /* หรูแบบเนียนๆ */
+  text-shadow: 0 0 2px #000;
+  transition: all 0.3s ease;
+}

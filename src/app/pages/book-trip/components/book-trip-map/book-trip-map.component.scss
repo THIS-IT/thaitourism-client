@@ -1,9 +1,11 @@
-/* ถ้าใช้ SCSS หรือ CSS */
 .rounded {
-  border-radius: 20px;
-  /* เลือกขนาดความโค้งตามใจ */
+  border-radius: 1rem;
   overflow: hidden;
-  /* สำคัญ ต้องมี ไม่งั้นมุมมนไม่ขึ้น */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  /* ใส่เงาเพิ่มสวย */
+  height: 500px;
+}
+
+.map {
+  width: 100%;
+  height: 100%;
 }

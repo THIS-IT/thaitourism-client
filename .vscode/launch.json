@@ -3,6 +3,17 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Attach to ng serve",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:4200",
+      "webRoot": "${workspaceFolder}",
+      "sourceMaps": true,
+      "trace": false,
+      "smartStep": true,
+      "skipFiles": ["<node_internals>/**", "node_modules/**"]
+    },
+    {
       "name": "ng serve",
       "type": "chrome",
       "request": "launch",

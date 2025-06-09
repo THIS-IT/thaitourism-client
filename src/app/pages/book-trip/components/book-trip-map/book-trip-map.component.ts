@@ -1,4 +1,6 @@
+import { CommonModule } from '@angular/common';
 import {
+  AfterViewInit,
   Component,
   ElementRef,
   Input,
@@ -13,10 +15,11 @@ import { Airport } from '../body-book-trip/models/airport-seletor/airport-select
 @Component({
   selector: 'app-book-trip-map',
   standalone: true,
+  imports: [CommonModule],
   templateUrl: './book-trip-map.component.html',
   styleUrls: ['./book-trip-map.component.scss'],
 })
-export class BookTripMapComponent implements OnChanges {
+export class BookTripMapComponent implements OnChanges, AfterViewInit {
   @Input() airportSelectorTH: Airport | null = null;
   @Input() airportSelectorUSA: Airport | null = null;
   @ViewChild('map', { static: false }) mapElementRef?: ElementRef;
@@ -31,54 +34,17 @@ export class BookTripMapComponent implements OnChanges {
   ngOnChanges(): void {
     const origin = this.getAirportLatLng(this.airportSelectorTH);
     const destination = this.getAirportLatLng(this.airportSelectorUSA);
-
     if (
       origin &&
       destination &&
       this.checkElementRefComponent.isAvailable(this.mapElementRef)
     ) {
-      // ถ้าเคยมี map มาก่อน จะทำการ เคลียร์ map ก่อน
-      if (this.map) {
-        this.map.remove(); // เคลียร์แผนที่ก่อน render ใหม่
-      }
-
-      // สร้างแผนที่ใหม่
-      this.map = L.map(this.mapElementRef!.nativeElement, {
-        center: this.getCenter(origin, destination), // จุดศูนย์กลางระหว่างต้น-ปลายทาง
-        zoom: 0,
-        zoomControl: false,
-        attributionControl: false,
-      });
-
-      // เพิ่ม tile layer จาก OpenStreetMap
-      L.tileLayer(
-        'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
-        {
-          maxZoom: 18,
-        },
-      ).addTo(this.map);
-
-      // ปักหมุดสนามบินต้นทาง
-      L.marker(origin, {
-        icon: this.createPin('#ffd700'),
-        title: 'ต้นทาง',
-      }).addTo(this.map);
-
-      // ปักหมุดสนามบินปลายทาง
-      L.marker(destination, {
-        icon: this.createPin('#00bfff'),
-        title: 'ปลายทาง',
-      }).addTo(this.map);
-
-      /// วาดเส้นเชื่อมระหว่างต้นทางกับปลายทาง
-      const line = L.polyline([origin, destination], {
-        color: 'red',
-        weight: 2,
-      }).addTo(this.map);
-
-      // ปรับ zoom ให้เห็นทั้งต้นทางและปลายทาง
-      this.map.fitBounds(line.getBounds());
+      this.renderMap(origin, destination);
     }
+  }
+
+  ngAfterViewInit(): void {
+    this.renderMapIfNeeded();
   }
 
   // แปลงข้อมูลสนามบินเป็นพิกัด lat/lng ถ้า lat และ long ไม่ null
@@ -128,5 +94,82 @@ export class BookTripMapComponent implements OnChanges {
         <circle cx="20" cy="20" r="10" fill="${color}" stroke="black" stroke-width="2"/>
       </svg>`;
     return 'data:image/svg+xml;base64,' + btoa(svg);
+  }
+
+  renderMapIfNeeded(): void {
+    const origin = this.getAirportLatLng(this.airportSelectorTH);
+    const destination = this.getAirportLatLng(this.airportSelectorUSA);
+
+    if (
+      origin &&
+      destination &&
+      this.checkElementRefComponent.isAvailable(this.mapElementRef)
+    ) {
+      this.renderMap(origin, destination);
+    }
+  }
+
+  renderMap(origin: L.LatLngLiteral, destination: L.LatLngLiteral): void {
+    // ล้างแผนที่เก่าถ้ามี
+    if (this.map) {
+      this.map.remove();
+    }
+
+    // สร้างแผนที่ใหม่
+    this.map = L.map(this.mapElementRef!.nativeElement, {
+      center: this.getCenter(origin, destination),
+      zoom: 0,
+      zoomControl: false,
+      attributionControl: false,
+    });
+
+    // เพิ่ม tile layer
+    L.tileLayer(
+      'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
+      {
+        maxZoom: 2,
+      },
+    ).addTo(this.map);
+
+    // ปักหมุดสนามบินต้นทาง
+    const markerOrigin = L.marker(origin, {
+      icon: this.createPin('#ffd700'),
+      title: 'ต้นทาง',
+    }).addTo(this.map);
+
+    if (this.validationDataUnils.isNotNil(this.airportSelectorTH)) {
+      markerOrigin.bindTooltip(this.airportSelectorTH.name, {
+        permanent: true,
+        direction: 'top',
+        offset: [0, -10],
+        className: 'marker-label',
+      });
+    }
+
+    // ปักหมุดสนามบินปลายทาง
+    const markerDestination = L.marker(destination, {
+      icon: this.createPin('#00bfff'),
+      title: 'ปลายทาง',
+    }).addTo(this.map);
+
+    if (this.validationDataUnils.isNotNil(this.airportSelectorUSA)) {
+      markerDestination.bindTooltip(this.airportSelectorUSA.name, {
+        permanent: true,
+        direction: 'top',
+        offset: [0, -10],
+        className: 'marker-label',
+      });
+    }
+
+    // วาดเส้นเชื่อม
+    const line = L.polyline([origin, destination], {
+      color: 'red',
+      weight: 2,
+      dashArray: '6 6',
+      opacity: 0.8,
+    }).addTo(this.map);
+
+    // ปรับ zoom ให้พอดีกับต้นทาง/ปลายทาง
+    this.map.fitBounds(line.getBounds());
   }
 }

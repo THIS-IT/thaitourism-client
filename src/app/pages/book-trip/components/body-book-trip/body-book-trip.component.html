@@ -80,13 +80,15 @@
         </select>
       </div>
     </div>
-
-    <!-- map -->
-    <div class="mt-4">
-      <app-book-trip-map
-        [airportSelectorTH]="airportSelectorTH.selectedAirport"
-        [airportSelectorUSA]="airportSelectorUSA.selectedAirport"
-      ></app-book-trip-map>
-    </div>
   </div>
 </div>
+
+<!-- map -->
+@if (airportSelectorTH.selectedAirport && airportSelectorUSA.selectedAirport) {
+  <div class="mt-2 mb-4">
+    <app-book-trip-map
+      [airportSelectorTH]="airportSelectorTH.selectedAirport"
+      [airportSelectorUSA]="airportSelectorUSA.selectedAirport"
+    ></app-book-trip-map>
+  </div>
+}
