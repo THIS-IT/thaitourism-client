@@ -10,75 +10,23 @@
 
   <div class="card-body">
     <div class="row g-3">
-      <!-- จังหวัดต้นทาง (TH) -->
-      <div class="col-12 col-md-6">
-        <label class="form-label">Province of origin</label>
-        <select
-          class="form-select"
-          [ngModel]="airportSelectorTH.selectedProvinceName"
-          (ngModelChange)="airportSelectorTH.selectProvince($event)"
-        >
-          <option value="" disabled>Select Province</option>
-          @for (province of airportSelectorTH.provinces; track $index) {
-            <option [value]="province">
-              {{ province }}
-            </option>
-          }
-        </select>
-      </div>
+      <!-- TH -->
+      <app-airport-selector
+        [selector]="airportSelectorTH"
+        labelProvince="Province of origin"
+        labelAirport="Destination airport"
+        placeholderProvince="Select Province"
+        placeholderAirport="Select Destination airport"
+      ></app-airport-selector>
 
-      <!-- สนามบินต้นทาง (TH) -->
-      <div class="col-12 col-md-6">
-        <label class="form-label">Destination airport</label>
-        <select
-          class="form-select"
-          [disabled]="!airportSelectorTH.selectedProvince"
-          [ngModel]="airportSelectorTH.selectedAirportName"
-          (ngModelChange)="airportSelectorTH.selectAirport($event)"
-        >
-          <option value="" disabled>Select Destination airport</option>
-          @for (airport of airportSelectorTH.airports; track $index) {
-            <option [value]="airport.iata">
-              {{ airport.name }} ({{ airport.iata }})
-            </option>
-          }
-        </select>
-      </div>
-
-      <!-- รัฐ/จังหวัดปลายทาง (USA) -->
-      <div class="col-12 col-md-6">
-        <label class="form-label">Destination state</label>
-        <select
-          class="form-select"
-          [ngModel]="airportSelectorUSA.selectedProvinceName"
-          (ngModelChange)="airportSelectorUSA.selectProvince($event)"
-        >
-          <option value="" disabled>Select Destination state</option>
-          @for (province of airportSelectorUSA.provinces; track $index) {
-            <option [value]="province">
-              {{ province }}
-            </option>
-          }
-        </select>
-      </div>
-
-      <!-- สนามบินปลายทาง (USA) -->
-      <div class="col-12 col-md-6">
-        <label class="form-label">Destination airport</label>
-        <select
-          class="form-select"
-          [disabled]="!airportSelectorUSA.selectedProvince"
-          [ngModel]="airportSelectorUSA.selectedAirportName"
-          (ngModelChange)="airportSelectorUSA.selectAirport($event)"
-        >
-          <option value="" disabled>Select Destination airport</option>
-          @for (airport of airportSelectorUSA.airports; track $index) {
-            <option [value]="airport.iata">
-              {{ airport.name }} ({{ airport.iata }})
-            </option>
-          }
-        </select>
-      </div>
+      <!-- USA -->
+      <app-airport-selector
+        [selector]="airportSelectorUSA"
+        labelProvince="Destination state"
+        labelAirport="Destination airport"
+        placeholderProvince="Select Destination state"
+        placeholderAirport="Select Destination airport"
+      ></app-airport-selector>
     </div>
   </div>
 </div>
