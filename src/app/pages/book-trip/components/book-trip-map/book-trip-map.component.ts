@@ -6,7 +6,7 @@ import {
   inject,
   Input,
   OnChanges,
-  ViewChild
+  ViewChild,
 } from '@angular/core';
 import * as L from 'leaflet';
 import { CheckElementRefComponent } from '../../../../shared/utils/check-element-ref/check-element-ref.unils';

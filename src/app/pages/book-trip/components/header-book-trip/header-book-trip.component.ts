@@ -25,7 +25,6 @@ export class HeaderBookTripComponent implements AfterViewInit, OnDestroy {
   private animationService = inject(SplitTextAnimationService);
   private checkElementRefComponent = inject(CheckElementRefComponent);
 
-
   ngAfterViewInit(): void {
     // ต้องรอให้ Font โหลดเสร็จก่อนค่อยเริ่ม SplitText และ Animation
     // ไม่งั้นตำแหน่งการ split อาจจะเพี้ยน ถ้า font ยังไม่โหลด

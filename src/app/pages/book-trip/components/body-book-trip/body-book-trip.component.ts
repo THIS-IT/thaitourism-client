@@ -9,11 +9,7 @@ import {
 import { AirportSelector } from './models/airport-seletor/airport-selector-th.model';
 @Component({
   selector: 'app-body-book-trip',
-  imports: [
-    CommonModule,
-    FormsModule,
-    AirportSelectorComponent,
-  ],
+  imports: [CommonModule, FormsModule, AirportSelectorComponent],
   standalone: true,
   templateUrl: './body-book-trip.component.html',
   styleUrls: ['./body-book-trip.component.scss'],
