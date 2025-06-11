@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AirportSelector } from '../body-book-trip/models/airport-seletor/airport-selector-th.model';
 
@@ -8,7 +8,6 @@ import { AirportSelector } from '../body-book-trip/models/airport-seletor/airpor
   imports: [CommonModule, FormsModule],
   templateUrl: './airport-selector.component.html',
   styleUrl: './airport-selector.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AirportSelectorComponent {
   @Input() selector: AirportSelector | null = null;

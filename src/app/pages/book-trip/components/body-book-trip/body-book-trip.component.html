@@ -11,14 +11,22 @@
   <div class="card-body">
     <div class="row g-3">
       <!-- TH -->
-      <app-airport-selector [selector]="airportSelectorTH" labelProvince="Province of origin"
-        labelAirport="Destination airport" placeholderProvince="Select Province"
-        placeholderAirport="Select Destination airport"></app-airport-selector>
+      <app-airport-selector
+        [selector]="airportSelectorTH"
+        labelProvince="Province of origin"
+        labelAirport="Destination airport"
+        placeholderProvince="Select Province"
+        placeholderAirport="Select Destination airport"
+      ></app-airport-selector>
 
       <!-- USA -->
-      <app-airport-selector [selector]="airportSelectorUSA" labelProvince="Destination state"
-        labelAirport="Destination airport" placeholderProvince="Select Destination state"
-        placeholderAirport="Select Destination airport"></app-airport-selector>
+      <app-airport-selector
+        [selector]="airportSelectorUSA"
+        labelProvince="Destination state"
+        labelAirport="Destination airport"
+        placeholderProvince="Select Destination state"
+        placeholderAirport="Select Destination airport"
+      ></app-airport-selector>
     </div>
   </div>
 </div>
@@ -26,7 +34,9 @@
 <!-- map -->
 @if (airportSelectorTH.selectedAirport && airportSelectorUSA.selectedAirport) {
 <div class="mt-2 mb-4">
-  <app-book-trip-map [airportSelectorTH]="airportSelectorTH.selectedAirport"
-    [airportSelectorUSA]="airportSelectorUSA.selectedAirport"></app-book-trip-map>
+  <app-book-trip-map
+    [airportSelectorTH]="airportSelectorTH.selectedAirport"
+    [airportSelectorUSA]="airportSelectorUSA.selectedAirport"
+  ></app-book-trip-map>
 </div>
 }
