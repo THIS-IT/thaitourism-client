@@ -2,57 +2,33 @@
   <div class="container-fluid">
     <!-- Brand -->
 
-    <button
-      (click)="changePage('thailandTourism')"
-      class="navbar-brand custom-brand-button"
-    >
+    <button (click)="changePage('thailandTourism')" class="navbar-brand custom-brand-button">
       Thailand Tourism
     </button>
 
     <!-- Hamburger Menu (Mobile) -->
-    <button
-      class="navbar-toggler d-lg-none"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNavAltMarkup"
-      aria-controls="navbarNavAltMarkup"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+    <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+      aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <!-- Menu Items -->
-    <div
-      class="collapse navbar-collapse justify-content-end"
-      id="navbarNavAltMarkup"
-    >
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
       <ul class="navbar-nav">
         <!-- Dynamic Menus -->
         <li class="nav-item me-3" *ngFor="let isMenu of menus">
-          <button
-            class="btn-nav pt-2"
-            (click)="changePage(isMenu.value)"
-            data-bs-toggle="collapse"
-            data-bs-target=".navbar-collapse.show"
-          >
+          <button class="btn-nav pt-2" (click)="changePage(isMenu.value)" data-bs-toggle="collapse"
+            data-bs-target=".navbar-collapse.show">
             {{ isMenu.name }}
           </button>
         </li>
 
         <!-- Language Button -->
         <li class="nav-item me-3">
-          <button
-            class="btn-nav pt-2"
-            data-bs-toggle="modal"
-            data-bs-target="#languageModal"
-          >
+          <button class="btn-nav pt-2" data-bs-toggle="modal" data-bs-target="#languageModal">
             <!-- ไอคอน: โชว์เฉพาะ lg ขึ้น -->
-            <img
-              [src]="iConLanguage"
-              alt="Language Icon"
-              class="img-icon d-none d-lg-block"
-            />
+            <img [src]="iConLanguage" alt="Language Icon" class="img-icon d-none d-lg-block" />
 
             <!-- ข้อความ: โชว์เฉพาะ md ลง -->
             <span class="d-lg-none">Language</span>
@@ -64,25 +40,15 @@
 </nav>
 
 <!-- 🌐 Language Modal -->
-<div
-  class="modal fade custom-modal"
-  id="languageModal"
-  tabindex="-1"
-  aria-labelledby="languageModalLabel"
-  aria-hidden="true"
->
+<div class="modal fade custom-modal" id="languageModal" tabindex="-1" aria-labelledby="languageModalLabel"
+  aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content text-center">
       <div class="modal-header">
         <h5 class="modal-title w-100 text-white" id="languageModalLabel">
           Select Language
         </h5>
-        <button
-          type="button"
-          class="btn-close btn-close-white"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <button class="btn lang-btn">🇹🇭 ภาษาไทย</button>
@@ -96,26 +62,26 @@
 <!-- 🔀 Page Content Switch -->
 <div class="container content-wrapper">
   @switch (isPage) {
-    @case ('thailandTourism') {
-      <app-thailand-tourism></app-thailand-tourism>
-    }
-    @case ('bookTrip') {
-      <app-book-trip></app-book-trip>
-    }
-    @case ('travelPackages') {
-      <app-travel-packages></app-travel-packages>
-    }
-    @case ('destinations') {
-      <app-destinations></app-destinations>
-    }
-    @case ('login') {
-      <app-login></app-login>
-    }
-    @case ('signUp') {
-      <app-sign-up></app-sign-up>
-    }
-    @default {
-      <div>Page not found</div>
-    }
+  @case ('thailandTourism') {
+  <app-thailand-tourism></app-thailand-tourism>
+  }
+  @case ('bookTrip') {
+  <app-book-trip></app-book-trip>
+  }
+  @case ('travelPackages') {
+  <app-travel-packages></app-travel-packages>
+  }
+  @case ('destinations') {
+  <app-destinations></app-destinations>
+  }
+  @case ('login') {
+  <app-login></app-login>
+  }
+  @case ('signUp') {
+  <app-sign-up></app-sign-up>
+  }
+  @default {
+  <div>Page not found</div>
+  }
   }
 </div>

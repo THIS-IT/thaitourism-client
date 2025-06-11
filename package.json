@@ -36,6 +36,7 @@
     "@angular/cli": "^20.0.1",
     "@angular/compiler-cli": "^20.0.1",
     "@angular/language-service": "^20.0.1",
+    "@prettier/plugin-xml": "^3.4.1",
     "@types/bootstrap": "^5.2.10",
     "@types/jasmine": "~5.1.0",
     "@typescript-eslint/eslint-plugin": "^8.33.0",
@@ -56,11 +57,7 @@
   },
   "lint-staged": {
     "*.{ts,js}": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "*.{json,md,html,scss}": [
-      "prettier --write"
+      "eslint --fix"
     ]
   }
 }

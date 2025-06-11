@@ -1,8 +1,11 @@
 {
-  "typescript.tsserver.experimental.enableProjectDiagnostics": true,
-  "typescript.preferences.importModuleSpecifier": "relative",
-  "editor.formatOnSave": true,
+  // "typescript.tsserver.experimental.enableProjectDiagnostics": true,
+  // "typescript.preferences.importModuleSpecifier": "relative",
+  // "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
   "cSpell.words": [
     "Ancizar",
     "Csvg",
