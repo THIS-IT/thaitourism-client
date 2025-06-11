@@ -1,12 +1,15 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-eerie-black">
   <div class="container-fluid">
+    <!-- Brand -->
+
     <button
       (click)="changePage('thailandTourism')"
-      class="navbar-brand fs-2 fw-bolder font-charm-bold"
+      class="navbar-brand custom-brand-button"
     >
       Thailand Tourism
     </button>
-    <!-- Hamburger Menu -->
+
+    <!-- Hamburger Menu (Mobile) -->
     <button
       class="navbar-toggler d-lg-none"
       type="button"
@@ -18,11 +21,14 @@
     >
       <span class="navbar-toggler-icon"></span>
     </button>
+
+    <!-- Menu Items -->
     <div
       class="collapse navbar-collapse justify-content-end"
       id="navbarNavAltMarkup"
     >
       <ul class="navbar-nav">
+        <!-- Dynamic Menus -->
         <li class="nav-item me-3" *ngFor="let isMenu of menus">
           <button
             class="btn-nav pt-2"
@@ -34,7 +40,7 @@
           </button>
         </li>
 
-        <!-- 🌐 ปุ่มลูกโลก เป็น Modal Language  -->
+        <!-- Language Button -->
         <li class="nav-item me-3">
           <button
             class="btn-nav pt-2"
@@ -87,6 +93,7 @@
   </div>
 </div>
 
+<!-- 🔀 Page Content Switch -->
 <div class="container content-wrapper">
   @switch (isPage) {
     @case ('thailandTourism') {

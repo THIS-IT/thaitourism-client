@@ -41,11 +41,12 @@
 
   .navbar .btn-nav:hover {
     color: #ffd700;
+    transform: scale(1.05);
+    cursor: pointer;
   }
 }
 
 .navbar-brand {
-  font-family: 'CharmBold', sans-serif;
   font-size: 1.5rem;
   color: #ffd700;
   border: none;
@@ -97,4 +98,28 @@
 
 .content-wrapper {
   padding-top: 120px; // ปรับตามความสูงของ navbar
+}
+
+.custom-brand-button {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: #ffd700;
+  background-color: transparent;
+  border: none;
+  letter-spacing: 1px;
+  padding: 0;
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.custom-brand-button:hover {
+  color: #ffc107;
+  transform: scale(1.03);
+  cursor: pointer;
+}
+
+.custom-brand-button:focus {
+  outline: none;
+  box-shadow: none;
 }
