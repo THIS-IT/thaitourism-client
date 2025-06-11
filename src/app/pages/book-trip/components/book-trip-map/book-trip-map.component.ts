@@ -3,13 +3,14 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  inject,
   Input,
   OnChanges,
-  ViewChild,
+  ViewChild
 } from '@angular/core';
 import * as L from 'leaflet';
 import { CheckElementRefComponent } from '../../../../shared/utils/check-element-ref/check-element-ref.unils';
-import { ValidationDataUnils } from '../../../../shared/utils/validation-data/validation-data.unils';
+import { ValidationDataUtils } from '../../../../shared/utils/validation-data/validation-data.utils';
 import { Airport } from '../body-book-trip/models/airport-seletor/airport-selector-th.model';
 
 @Component({
@@ -25,11 +26,8 @@ export class BookTripMapComponent implements OnChanges, AfterViewInit {
   @ViewChild('map', { static: false }) mapElementRef?: ElementRef;
 
   private map?: L.Map;
-
-  constructor(
-    private validationDataUnils: ValidationDataUnils,
-    private checkElementRefComponent: CheckElementRefComponent,
-  ) {}
+  private validationDataUtils = inject(ValidationDataUtils);
+  private checkElementRefComponent = inject(CheckElementRefComponent);
 
   ngOnChanges(): void {
     const origin = this.getAirportLatLng(this.airportSelectorTH);
@@ -52,8 +50,8 @@ export class BookTripMapComponent implements OnChanges, AfterViewInit {
     airport: Airport | null | undefined,
   ): L.LatLngLiteral | null {
     if (
-      this.validationDataUnils.isNotNil(airport) &&
-      this.validationDataUnils.allNotNil(airport.lat, airport.long)
+      this.validationDataUtils.isNotNil(airport) &&
+      this.validationDataUtils.allNotNil(airport.lat, airport.long)
     ) {
       return {
         lat: airport.lat as number,
@@ -137,7 +135,7 @@ export class BookTripMapComponent implements OnChanges, AfterViewInit {
       title: 'ต้นทาง',
     }).addTo(this.map);
 
-    if (this.validationDataUnils.isNotNil(this.airportSelectorTH)) {
+    if (this.validationDataUtils.isNotNil(this.airportSelectorTH)) {
       markerOrigin.bindTooltip(this.airportSelectorTH.name, {
         permanent: true,
         direction: 'top',
@@ -152,7 +150,7 @@ export class BookTripMapComponent implements OnChanges, AfterViewInit {
       title: 'ปลายทาง',
     }).addTo(this.map);
 
-    if (this.validationDataUnils.isNotNil(this.airportSelectorUSA)) {
+    if (this.validationDataUtils.isNotNil(this.airportSelectorUSA)) {
       markerDestination.bindTooltip(this.airportSelectorUSA.name, {
         permanent: true,
         direction: 'top',

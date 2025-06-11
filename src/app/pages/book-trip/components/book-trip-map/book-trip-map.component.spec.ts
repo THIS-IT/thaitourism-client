@@ -1,7 +1,7 @@
 import { ElementRef } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CheckElementRefComponent } from '../../../../shared/utils/check-element-ref/check-element-ref.unils';
-import { ValidationDataUnils } from '../../../../shared/utils/validation-data/validation-data.unils';
+import { ValidationDataUtils } from '../../../../shared/utils/validation-data/validation-data.utils';
 import { Airport } from '../body-book-trip/models/airport-seletor/airport-selector-th.model';
 import { BookTripMapComponent } from './book-trip-map.component';
 
@@ -13,8 +13,8 @@ describe('BookTripMapComponent', () => {
 
   // Mock utils
   const mockValidationUtils = {
-    isNotNil: (val: any) => val !== null && val !== undefined,
-    allNotNil: (...args: any[]) =>
+    isNotNil: (val: unknown) => val !== null && val !== undefined,
+    allNotNil: (...args: unknown[]) =>
       args.every((val) => val !== null && val !== undefined),
   };
 
@@ -26,7 +26,7 @@ describe('BookTripMapComponent', () => {
     await TestBed.configureTestingModule({
       imports: [BookTripMapComponent],
       providers: [
-        { provide: ValidationDataUnils, useValue: mockValidationUtils },
+        { provide: ValidationDataUtils, useValue: mockValidationUtils },
         { provide: CheckElementRefComponent, useValue: mockCheckElementRef },
       ],
     }).compileComponents();
@@ -51,7 +51,7 @@ describe('BookTripMapComponent', () => {
     });
 
     it('should return null if lat or long is null', () => {
-      const airport: Airport = { lat: null, long: 100 } as any;
+      const airport: Airport = { lat: null, long: 100 } as unknown as Airport;
       expect(component.getAirportLatLng(airport)).toBeNull();
     });
   });
@@ -78,7 +78,7 @@ describe('BookTripMapComponent', () => {
       component.airportSelectorTH = null;
       component.airportSelectorUSA = { lat: 37, long: -122 } as Airport;
       component.ngOnChanges();
-      expect((component as any).map).toBeUndefined();
+      expect(component['map']).toBeUndefined();
     });
 
     it('should create map if both airport selectors are valid and elementRef is available', () => {
@@ -87,7 +87,7 @@ describe('BookTripMapComponent', () => {
       component.airportSelectorTH = { lat: 13, long: 100 } as Airport;
       component.airportSelectorUSA = { lat: 37, long: -122 } as Airport;
       component.ngOnChanges();
-      expect((component as any).map).toBeDefined();
+      expect(component['map']).toBeDefined();
     });
 
     it('should remove existing map before creating new one', () => {

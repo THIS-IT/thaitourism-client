@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
-export class ValidationDataUnils {
+export class ValidationDataUtils {
   // เช็คว่า value ไม่เป็น null หรือ undefined
   isNotNil<T>(value: T | null | undefined): value is T {
     return value !== null && value !== undefined;

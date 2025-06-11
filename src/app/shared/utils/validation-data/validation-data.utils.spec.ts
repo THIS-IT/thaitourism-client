@@ -1,14 +1,14 @@
 import { TestBed } from '@angular/core/testing';
-import { ValidationDataUnils } from './validation-data.unils';
+import { ValidationDataUtils } from './validation-data.utils';
 
 describe('ValidationDataUnils', () => {
-  let service: ValidationDataUnils;
+  let service: ValidationDataUtils;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ValidationDataUnils],
+      providers: [ValidationDataUtils],
     });
-    service = TestBed.inject(ValidationDataUnils);
+    service = TestBed.inject(ValidationDataUtils);
   });
 
   it('should be created', () => {

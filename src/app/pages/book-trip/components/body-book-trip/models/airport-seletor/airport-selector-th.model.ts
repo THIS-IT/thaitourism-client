@@ -4,24 +4,24 @@ export class Airport {
     public iata: string,
     public lat?: number,
     public long?: number,
-  ) {}
+  ) { }
 }
 
 export class ProvinceAirports {
   constructor(
     public province: string,
     public airports: Airport[],
-  ) {}
+  ) { }
 }
 
 export class AirportSelector {
   selectedProvince: ProvinceAirports | null = null;
-  selectedProvinceName: string = '';
+  selectedProvinceName: string | null = null;
 
   selectedAirport: Airport | null = null;
-  selectedAirportName: string = '';
+  selectedAirportName: string | null = null;
 
-  constructor(public data: ProvinceAirports[]) {}
+  constructor(public data: ProvinceAirports[]) { }
 
   get provinces(): string[] {
     return this.data.map((p) => p.province);

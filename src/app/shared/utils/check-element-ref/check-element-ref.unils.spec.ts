@@ -18,14 +18,14 @@ describe('CheckElementRefComponent', () => {
   });
 
   it('should return false if nativeElement is null or undefined', () => {
-    const fakeElementRef1 = { nativeElement: null } as ElementRef<any>;
-    const fakeElementRef2 = { nativeElement: undefined } as ElementRef<any>;
+    const fakeElementRef1: ElementRef<unknown> = { nativeElement: null } as ElementRef<unknown>;
+    const fakeElementRef2: ElementRef<unknown> = { nativeElement: undefined } as ElementRef<unknown>;
     expect(util.isAvailable(fakeElementRef1)).toBeFalse();
     expect(util.isAvailable(fakeElementRef2)).toBeFalse();
   });
 
   it('should return true if nativeElement exists', () => {
-    const fakeElementRef = { nativeElement: {} } as ElementRef<any>;
+    const fakeElementRef = { nativeElement: {} } as ElementRef<object>;
     expect(util.isAvailable(fakeElementRef)).toBeTrue();
   });
 });

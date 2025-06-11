@@ -2,6 +2,7 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  inject,
   OnDestroy,
   ViewChild,
 } from '@angular/core';
@@ -20,10 +21,10 @@ gsap.registerPlugin(SplitText);
 })
 export class HeaderBookTripComponent implements AfterViewInit, OnDestroy {
   @ViewChild('splitTextElement') splitTextElement: ElementRef | null = null;
-  constructor(
-    private animationService: SplitTextAnimationService,
-    private checkElementRefComponent: CheckElementRefComponent,
-  ) {}
+
+  private animationService = inject(SplitTextAnimationService);
+  private checkElementRefComponent = inject(CheckElementRefComponent);
+
 
   ngAfterViewInit(): void {
     // ต้องรอให้ Font โหลดเสร็จก่อนค่อยเริ่ม SplitText และ Animation

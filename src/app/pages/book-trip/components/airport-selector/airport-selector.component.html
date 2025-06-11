@@ -1,34 +1,34 @@
 @if (selector) {
-  <div class="row g-3">
-    <div class="col-12 col-md-6">
-      <label class="form-label">{{ labelProvince }}</label>
-      <select
-        class="form-select"
-        [ngModel]="selector.selectedProvinceName"
-        (ngModelChange)="selector.selectProvince($event)"
-      >
-        <option value="" disabled>{{ placeholderProvince }}</option>
-        @for (province of selector.provinces; track $index) {
-          <option [value]="province">{{ province }}</option>
-        }
-      </select>
-    </div>
-
-    <div class="col-12 col-md-6">
-      <label class="form-label">{{ labelAirport }}</label>
-      <select
-        class="form-select"
-        [disabled]="!selector.selectedProvince"
-        [ngModel]="selector.selectedAirportName"
-        (ngModelChange)="selector.selectAirport($event)"
-      >
-        <option value="" disabled>{{ placeholderAirport }}</option>
-        @for (airport of selector.airports; track $index) {
-          <option [value]="airport.iata">
-            {{ airport.name }} ({{ airport.iata }})
-          </option>
-        }
-      </select>
-    </div>
+<div class="row g-3">
+  <div class="col-12 col-md-6">
+    <label class="form-label" for="province-select">{{ labelProvince }}</label>
+    <select
+      class="form-select"
+      [ngModel]="selector.selectedProvinceName"
+      (ngModelChange)="selector.selectProvince($event)"
+    >
+      <option value="" disabled>{{ placeholderProvince }}</option>
+      @for (province of selector.provinces; track $index) {
+      <option [value]="province">{{ province }}</option>
+      }
+    </select>
   </div>
+
+  <div class="col-12 col-md-6">
+    <label class="form-label" for="form-select">{{ labelAirport }}</label>
+    <select
+      class="form-select"
+      [disabled]="!selector.selectedProvince"
+      [ngModel]="selector.selectedAirportName"
+      (ngModelChange)="selector.selectAirport($event)"
+    >
+      <option value="" disabled>{{ placeholderAirport }}</option>
+      @for (airport of selector.airports; track $index) {
+      <option [value]="airport.iata">
+        {{ airport.name }} ({{ airport.iata }})
+      </option>
+      }
+    </select>
+  </div>
+</div>
 }
