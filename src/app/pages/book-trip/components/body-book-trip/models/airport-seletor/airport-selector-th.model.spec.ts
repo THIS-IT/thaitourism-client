@@ -24,7 +24,7 @@ describe('AirportSelector', () => {
   it('should initialize with no selected province or airport', () => {
     expect(airportSelector.selectedProvince).toBeNull();
     expect(airportSelector.selectedAirport).toBeNull();
-    expect(airportSelector.selectedAirportIATA).toBe('');
+    expect(airportSelector.selectedAirportIATA).toBeNull();
   });
 
   it('should list all provinces', () => {
@@ -45,7 +45,7 @@ describe('AirportSelector', () => {
 
     airportSelector.selectProvince('เชียงใหม่');
     expect(airportSelector.selectedAirport).toBeNull();
-    expect(airportSelector.selectedAirportName).toBe('');
+    expect(airportSelector.selectedAirportName).toBeNull();
   });
 
   it('should select airport correctly', () => {

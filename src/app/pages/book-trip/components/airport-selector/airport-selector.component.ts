@@ -10,7 +10,7 @@ import { AirportSelector } from '../body-book-trip/models/airport-seletor/airpor
   styleUrl: './airport-selector.component.scss',
 })
 export class AirportSelectorComponent {
-  @Input() selector: AirportSelector | null = null;
+  @Input() selector!: AirportSelector;
   @Input() labelProvince = 'Province';
   @Input() labelAirport = 'Airport';
   @Input() placeholderProvince = 'Select Province';

@@ -1,5 +1,4 @@
-@if (selector) {
-<div class="row g-3">
+<div class="row g-3" *ngIf="selector">
   <div class="col-12 col-md-6">
     <label class="form-label" for="province-select">{{ labelProvince }}</label>
     <select
@@ -7,13 +6,14 @@
       [ngModel]="selector.selectedProvinceName"
       (ngModelChange)="selector.selectProvince($event)"
     >
-      <option value="" disabled>{{ placeholderProvince }}</option>
-      @for (province of selector.provinces; track $index) {
-      <option [value]="province">{{ province }}</option>
-      }
+      <option [ngValue]="null" disabled>{{ placeholderProvince }}</option>
+      <ng-container *ngIf="selector.provinces?.length">
+        <option *ngFor="let province of selector.provinces" [value]="province">
+          {{ province }}
+        </option>
+      </ng-container>
     </select>
   </div>
-
   <div class="col-12 col-md-6">
     <label class="form-label" for="form-select">{{ labelAirport }}</label>
     <select
@@ -22,13 +22,15 @@
       [ngModel]="selector.selectedAirportName"
       (ngModelChange)="selector.selectAirport($event)"
     >
-      <option value="" disabled>{{ placeholderAirport }}</option>
-      @for (airport of selector.airports; track $index) {
-      <option [value]="airport.iata">
-        {{ airport.name }} ({{ airport.iata }})
-      </option>
-      }
+      <option [ngValue]="null" disabled>{{ placeholderAirport }}</option>
+      <ng-container *ngIf="selector.airports?.length">
+        <option
+          *ngFor="let airport of selector.airports"
+          [value]="airport.iata"
+        >
+          {{ airport.name }} ({{ airport.iata }})
+        </option>
+      </ng-container>
     </select>
   </div>
 </div>
-}

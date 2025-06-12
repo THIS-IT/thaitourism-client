@@ -33,7 +33,7 @@ export class AirportSelector {
     this.selectedProvince =
       this.data.find((p) => p.province === provinceName) || null;
     this.selectedAirport = null;
-    this.selectedAirportName = '';
+    this.selectedAirportName = null;
   }
 
   selectAirport(iata: string): Airport | null {
@@ -43,7 +43,7 @@ export class AirportSelector {
     return this.selectedAirport;
   }
 
-  get selectedAirportIATA(): string {
-    return this.selectedAirport?.iata || '';
+  get selectedAirportIATA(): string | null {
+    return this.selectedAirport?.iata || null;
   }
 }
