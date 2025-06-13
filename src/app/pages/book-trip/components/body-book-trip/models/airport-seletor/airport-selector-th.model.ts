@@ -24,6 +24,13 @@ export class AirportSelectorModel {
     return this.data.map((p) => p.province);
   }
 
+  get provincesName(): string | null {
+    return (
+      this.data.find((data) => data.province === this.selectedProvinceName)
+        ?.province || null
+    );
+  }
+
   get airports(): Airport[] {
     return this.selectedProvince?.airports ?? [];
   }
@@ -39,7 +46,6 @@ export class AirportSelectorModel {
   selectAirport(iata: string): Airport | null {
     this.selectedAirportName = iata;
     this.selectedAirport = this.airports.find((a) => a.iata === iata) || null;
-
     return this.selectedAirport;
   }
 

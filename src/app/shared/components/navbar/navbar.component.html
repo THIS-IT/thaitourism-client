@@ -94,20 +94,14 @@
 </div>
 
 <!-- 🔀 Page Content Switch -->
-<div class="container content-wrapper">
-  @switch (isPage) { @case ('thailandTourism') {
-  <app-thailand-tourism></app-thailand-tourism>
-  } @case ('bookTrip') {
-  <app-book-trip></app-book-trip>
-  } @case ('travelPackages') {
-  <app-travel-packages></app-travel-packages>
-  } @case ('destinations') {
-  <app-destinations></app-destinations>
-  } @case ('login') {
-  <app-login></app-login>
-  } @case ('signUp') {
-  <app-sign-up></app-sign-up>
-  } @default {
-  <div>Page not found</div>
-  } }
+<div class="container content-wrapper" [ngSwitch]="isPage">
+  <app-thailand-tourism
+    *ngSwitchCase="'thailandTourism'"
+  ></app-thailand-tourism>
+  <app-book-trip *ngSwitchCase="'bookTrip'"></app-book-trip>
+  <app-travel-packages *ngSwitchCase="'travelPackages'"></app-travel-packages>
+  <app-destinations *ngSwitchCase="'destinations'"></app-destinations>
+  <app-login *ngSwitchCase="'login'"></app-login>
+  <app-sign-up *ngSwitchCase="'signUp'"></app-sign-up>
+  <div *ngSwitchDefault>Page not found</div>
 </div>

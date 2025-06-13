@@ -2,6 +2,7 @@
   id="carouselExampleCaptions"
   class="carousel slide"
   data-bs-ride="carousel"
+  *ngIf="province"
 >
   <div class="carousel-indicators">
     <button
@@ -25,41 +26,22 @@
       aria-label="Slide 3"
     ></button>
   </div>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img
-        src="https://travel.mthai.com/app/uploads/2014/07/%E0%B8%A0%E0%B8%B2%E0%B8%9E%E0%B8%97%E0%B8%B4%E0%B8%A7%E0%B8%97%E0%B8%B1%E0%B8%A8%E0%B8%99%E0%B9%8C%E0%B8%AA%E0%B8%A7%E0%B8%A2%E0%B9%86-14.jpg"
-        class="d-block w-100"
-        alt="Thailand Beach"
-      />
-      <div class="carousel-caption d-none d-md-block">
-        <h5>ทะเลพัทยา</h5>
-        <p>บรรยากาศริมชายหาด</p>
+
+  <div
+    class="carousel-inner"
+    *ngIf="carouselImage.getDataByProvince(province) as imagesData"
+  >
+    <ng-container *ngFor="let image of imagesData.image; let i = index">
+      <div class="carousel-item" [class.active]="i === 0">
+        <img [src]="image.url" class="d-block w-100" [alt]="image.title" />
+        <div class="carousel-caption d-none d-md-block">
+          <h5>{{ image.title }}</h5>
+          <p>{{ image.description }}</p>
+        </div>
       </div>
-    </div>
-    <div class="carousel-item">
-      <img
-        src="https://images.pexels.com/photos/34950/pexels-photo.jpg"
-        class="d-block w-100"
-        alt="Thailand Mountain"
-      />
-      <div class="carousel-caption d-none d-md-block">
-        <h5>ภูเขาเชียงใหม่</h5>
-        <p>เย็นสบายธรรมชาติ</p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img
-        src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429"
-        class="d-block w-100"
-        alt="Bangkok City"
-      />
-      <div class="carousel-caption d-none d-md-block">
-        <h5>กรุงเทพฯ ยามค่ำคืน</h5>
-        <p>แสงสีและความคึกคัก</p>
-      </div>
-    </div>
+    </ng-container>
   </div>
+
   <button
     class="carousel-control-prev"
     type="button"

@@ -76,4 +76,10 @@ describe('airportSelectorModel', () => {
     expect(airportSelectorModel.selectedAirport).toBeNull();
     expect(airportSelectorModel.selectedAirportName).toBe('XXX');
   });
+
+  it('should return data for a null province', () => {
+    const result = airportSelectorModel.provincesName;
+    expect(result).toBeDefined();
+    expect(result).toBeNull();
+  });
 });
