@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CarouselImageComponent } from '../../../../shared/components/carousel-image.component/carousel-image.component';
+
+import { CarouselImageComponent } from '../../../../shared/components/carousel-image/carousel-image.component';
 import { AirportSelectorComponent } from '../airport-selector/airport-selector.component';
 import {
   dataAirportsByProvinceTH,
