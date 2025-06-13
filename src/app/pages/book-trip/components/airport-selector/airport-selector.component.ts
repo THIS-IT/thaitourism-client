@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { AirportSelector } from '../body-book-trip/models/airport-seletor/airport-selector-th.model';
+import { AirportSelectorModel } from '../body-book-trip/models/airport-seletor/airport-selector-th.model';
 
 @Component({
   selector: 'app-airport-selector',
@@ -10,7 +10,7 @@ import { AirportSelector } from '../body-book-trip/models/airport-seletor/airpor
   styleUrl: './airport-selector.component.scss',
 })
 export class AirportSelectorComponent {
-  @Input() selector!: AirportSelector;
+  @Input() selector!: AirportSelectorModel;
   @Input() labelProvince = 'Province';
   @Input() labelAirport = 'Airport';
   @Input() placeholderProvince = 'Select Province';

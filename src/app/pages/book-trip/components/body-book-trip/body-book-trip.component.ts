@@ -7,7 +7,8 @@ import {
   dataAirportsByProvinceTH,
   dataAirportsByProvinceUSA,
 } from './data/airports.constant';
-import { AirportSelector } from './models/airport-seletor/airport-selector-th.model';
+import { AirportSelectorModel } from './models/airport-seletor/airport-selector-th.model';
+
 @Component({
   selector: 'app-body-book-trip',
   imports: [
@@ -22,6 +23,6 @@ import { AirportSelector } from './models/airport-seletor/airport-selector-th.mo
 })
 export class BodyBookTripComponent {
   flowerImage = 'assets/images/hibiscus.png';
-  airportSelectorTH = new AirportSelector(dataAirportsByProvinceTH);
-  airportSelectorUSA = new AirportSelector(dataAirportsByProvinceUSA);
+  airportSelectorTH = new AirportSelectorModel(dataAirportsByProvinceTH);
+  airportSelectorUSA = new AirportSelectorModel(dataAirportsByProvinceUSA);
 }

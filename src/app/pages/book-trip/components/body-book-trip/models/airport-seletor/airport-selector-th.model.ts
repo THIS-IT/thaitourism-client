@@ -11,7 +11,7 @@ export class ProvinceAirports {
   constructor(public province: string, public airports: Airport[]) {}
 }
 
-export class AirportSelector {
+export class AirportSelectorModel {
   selectedProvince: ProvinceAirports | null = null;
   selectedProvinceName: string | null = null;
 
